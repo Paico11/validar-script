@@ -1,0 +1,20 @@
+name: Validate
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  shellcheck:
+    name: ejecutar shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: instalar shellcheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+
+      - name: ejecutar shellcheck
+        run: shellcheck script.sh
